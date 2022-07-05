@@ -19,7 +19,6 @@ def get_node(external_bangs_db, bang):
 def get_bang_definition_and_ac(external_bangs_db, bang):
     node, before, after = get_node(external_bangs_db, bang)
 
-    bang_definition = None
     bang_ac_list = []
     if after != '':
         for k in node:
@@ -41,13 +40,11 @@ def resolve_bang_definition(bang_definition, query):
     if url.startswith('//'):
         url = 'https:' + url
     rank = int(rank) if len(rank) > 0 else 0
-    return (url, rank)
 
 
 def get_bang_definition_and_autocomplete(bang, external_bangs_db=None):
     global EXTERNAL_BANGS
     if external_bangs_db is None:
-        external_bangs_db = EXTERNAL_BANGS
 
     bang_definition, bang_ac_list = get_bang_definition_and_ac(external_bangs_db, bang)
 
